@@ -10,7 +10,7 @@ const CountryCard = ({ country }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === "") {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       toggleCard();
     }
@@ -19,7 +19,7 @@ const CountryCard = ({ country }) => {
   return (
     <div className="card-container basis-full md:basis-2xs lg:basis-2xs">
       <div
-        className="p-4 cursor-pointer bg-white rounded-md shadow-lg hover:bg-gray-100
+        className="p-4 cursor-pointer bg-white rounded-md shadow-lg transition-colors duration-150 ease-in-out hover:bg-gray-100
                focus:outline-none focus:ring-2 focus:ring-blue-500"
         tabIndex="0"
         role="button"
@@ -27,9 +27,13 @@ const CountryCard = ({ country }) => {
         onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
       >
-        <div className="flex items-center">
+        <div className={`${isExpanded ? "" : "flex items-center"}`}>
           <img
-            className="flag-img h-full object-cover object-center"
+            className={`flag-img object-cover object-center transition-all duration-150 ease-in-out ${
+              isExpanded
+                ? "w-full h-full mb-2"
+                : "w-10 h-10 rounded-full mr-2.5"
+            }`}
             src={country.flag}
             alt={`${country.name}'s flag`}
           />
@@ -44,7 +48,7 @@ const CountryCard = ({ country }) => {
         </div>
 
         {isExpanded && (
-          <div className="other-details mt-4 pt-4 border-t border-gray-200 text-sm">
+          <div className="other-details mt-4 pt-4 border-t border-gray-200 text-sm ">
             <p>
               <span>Capital: </span>
               {country.capital}
