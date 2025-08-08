@@ -7,23 +7,31 @@ import "../src/styles/main.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [searchCountry, setSearchCountry] = useState("");
 
   useEffect(() => {
     setCountries(countriesData);
   }, []);
 
-  const filteredCountries = countries;
+  const filteredCountries = searchCountry
+    ? countries.filter((country) =>
+        country.name.toLowerCase().includes(searchCountry.toLocaleLowerCase())
+      )
+    : countries;
 
   return (
     <>
       <img
         src="src/img/globe.png"
-        alt="globe"
-        className="globe justify-self-center mt-25 mb-15"
+        alt="globe-img"
+        className="globe-img justify-self-center mt-25 mb-15"
       />
 
       <div>
-        <SearchBar></SearchBar>
+        <SearchBar
+          searchCountry={searchCountry}
+          setSearchCountry={setSearchCountry}
+        ></SearchBar>
 
         <hr className="border-gray-300 mb-6" />
 
