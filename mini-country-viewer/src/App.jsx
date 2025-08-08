@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import countriesData from "../src/assets/countries.json";
 import SearchBar from "../src/components/SearchBar";
 import CountryCard from "../src/components/CountryCard";
+import "../src/styles/main.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -15,12 +16,23 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <img
+        src="src/img/globe.png"
+        alt="globe"
+        className="globe justify-self-center mt-25 mb-15"
+      />
+
+      <div>
         <SearchBar></SearchBar>
+
+        <hr className="border-gray-300 mb-6" />
+
         {/* Map over country array to display each country */}
-        {filteredCountries.map((country) => (
-          <CountryCard key={country.name} country={country}></CountryCard>
-        ))}
+        <div className="flex flex-wrap gap-6 justify-center">
+          {filteredCountries.map((country) => (
+            <CountryCard key={country.name} country={country}></CountryCard>
+          ))}
+        </div>
       </div>
     </>
   );
