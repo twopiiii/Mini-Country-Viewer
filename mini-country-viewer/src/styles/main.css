@@ -16,3 +16,8 @@ body {
   border-radius: 50%;
   margin-right: 10px;
 }
+
+.other-details p span {
+  font-weight: bold;
+  color: #434343;
+}
