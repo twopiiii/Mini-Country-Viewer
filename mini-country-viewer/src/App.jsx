@@ -9,10 +9,16 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [searchCountry, setSearchCountry] = useState("");
 
+  {
+    /* Store data in array */
+  }
   useEffect(() => {
     setCountries(countriesData);
   }, []);
 
+  {
+    /* Filter display when search */
+  }
   const filteredCountries = searchCountry
     ? countries.filter((country) =>
         country.name.toLowerCase().includes(searchCountry.toLocaleLowerCase())

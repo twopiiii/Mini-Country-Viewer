@@ -4,11 +4,12 @@ import "../styles/main.css";
 const CountryCard = ({ country }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // sets if card will expand or collapse
+  // Sets if card will expand or collapse
   const toggleCard = () => {
     setIsExpanded(!isExpanded);
   };
 
+  // Enables enter, and space for navigation
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -27,6 +28,7 @@ const CountryCard = ({ country }) => {
         onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
       >
+        {/* Change image size in toggle */}
         <div className={`${isExpanded ? "" : "flex items-center"}`}>
           <img
             className={`flag-img object-cover object-center transition-all duration-150 ease-in-out ${
@@ -47,6 +49,7 @@ const CountryCard = ({ country }) => {
           </div>
         </div>
 
+        {/* Display other info in toggle */}
         {isExpanded && (
           <div className="other-details mt-4 pt-4 border-t border-gray-200 text-sm ">
             <p>
